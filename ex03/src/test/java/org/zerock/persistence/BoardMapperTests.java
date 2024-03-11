@@ -55,4 +55,14 @@ public class BoardMapperTests {
     log.info("after insert selectkey : "+board.getBno());
   }
   
+  //테스트 : 게시물 상세읽기
+  @Test
+  public void testRead() {
+    
+    // 존재하는 게시물 번호인지 확인
+    BoardVO board = mapper.read(5L);
+    
+    log.info(board);
+  }
+  
 }
