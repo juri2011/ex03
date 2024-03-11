@@ -20,4 +20,7 @@ public interface BoardMapper {
   
   //게시글 삭제
   public int delete(Long bno);
+  
+  //게시글 수정
+  public int update(BoardVO board);
 }
