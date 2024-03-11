@@ -44,9 +44,12 @@ public class BoardServiceImpl implements BoardService {
     
   }
 
+  //게시물 조회(상세 보기)
   @Override
   public BoardVO get(Long bno) {
-    return null;
+    log.info("get..........."+bno);
+    
+    return mapper.read(bno);
   }
 
   @Override
