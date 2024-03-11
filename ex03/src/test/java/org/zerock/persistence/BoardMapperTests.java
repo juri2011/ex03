@@ -18,6 +18,7 @@ public class BoardMapperTests {
   @Autowired
   private BoardMapper mapper;
   
+  //테스트: 전체 게시글 가져오기
   @Test
   public void testGetList() {
     
@@ -25,6 +26,7 @@ public class BoardMapperTests {
     
   }
   
+  //테스트: 데이터 삽입
   @Test
   public void testInsert() {
     
@@ -38,9 +40,19 @@ public class BoardMapperTests {
     log.info(board);
   }
   
+  //테스트: key값 확인 후 데이터 삽입
   @Test
   public void testInsertSelectKey() {
     
+    BoardVO board = new BoardVO();
+    board.setTitle("새로 작성하는 글 selectKey");
+    board.setContent("새로 작성하는 내용 selectKey");
+    board.setWriter("newbie");
+    
+    mapper.insertSelectKey(board);
+    
+    log.info(board);
+    log.info("after insert selectkey : "+board.getBno());
   }
   
 }
