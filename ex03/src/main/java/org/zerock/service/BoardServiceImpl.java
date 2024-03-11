@@ -52,14 +52,24 @@ public class BoardServiceImpl implements BoardService {
     return mapper.read(bno);
   }
 
+  //게시물 수정
   @Override
   public boolean modify(BoardVO board) {
-    return false;
+    
+    log.info("modify......." + board);
+    
+    //정상적으로 수정되면 1이 반환됨
+    return mapper.update(board) == 1;
   }
-
+  
+  //게시물 삭제
   @Override
   public boolean remove(Long bno) {
-    return false;
+    
+    log.info("remove...." + bno);
+    
+    //정상적으로 삭제되면 1이 반환됨
+    return mapper.delete(bno) == 1;
   }
 
   //게시글 목록
