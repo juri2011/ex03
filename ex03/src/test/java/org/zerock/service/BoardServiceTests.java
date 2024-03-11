@@ -20,6 +20,7 @@ public class BoardServiceTests {
   private BoardService service;
   
   //BoardService 객체가 제대로 주입되었는지 확인
+  //BoardService 안의 BoardMapper가 주입이 잘 되었다면 BoardService 객체도 성공적으로 주입이 될 것이다.
   @Test
   public void testExist() {
     
