@@ -49,9 +49,34 @@ public class BoardServiceTests {
     service.getList().forEach(board -> log.info(board));
   }
   
+  //테스트: 게시물 상세 조회
   @Test
   public void testGet() {
     
     log.info(service.get(1L));
   }
+  
+  //테스트: 게시물 삭제
+  @Test
+  public void testDelete() {
+    //게시물 번호가 있는지 확인하고 테스트할것
+    log.info("REMOVE RESULT: " + service.remove(2L));
+  }
+  
+  //테스트: 게시물 수정
+  @Test
+  public void testUpdate() {
+    
+    //1번 게시물을 수정
+    BoardVO board = service.get(1L);
+    
+    //1번에 내용이 없다면 종료
+    if(board == null) {
+      return;
+    }
+    
+    board.setTitle("제목을 수정합니다.");
+    log.info("UPDATE RESULT: " + service.modify(board));
+  }
+  
 }
