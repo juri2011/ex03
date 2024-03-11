@@ -17,4 +17,7 @@ public interface BoardMapper {
   
   //게시글 읽기(상세조회)
   public BoardVO read(Long bno);
+  
+  //게시글 삭제
+  public int delete(Long bno);
 }
