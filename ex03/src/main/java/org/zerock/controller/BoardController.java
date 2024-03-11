@@ -13,7 +13,7 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 // "/board"로 시작하는 모든 처리를 BoardController가 담당
 @RequestMapping("/board/*")
-@AllArgsConstructor
+@AllArgsConstructor //생성자 주입
 public class BoardController {
   
   private BoardService service;
