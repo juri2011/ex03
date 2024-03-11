@@ -35,6 +35,7 @@ public class BoardServiceImpl implements BoardService {
   @Setter(onMethod_ = @Autowired)
   private BoardMapper mapper;
   
+  //게시글 등록
   @Override
   public void register(BoardVO board) {
     
@@ -58,9 +59,14 @@ public class BoardServiceImpl implements BoardService {
     return false;
   }
 
+  //게시글 목록
   @Override
   public List<BoardVO> getList() {
-    return null;
+    
+    log.info("getList.............");
+    
+    return mapper.getList();
+    
   }
 
 }
