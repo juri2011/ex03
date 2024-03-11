@@ -51,6 +51,6 @@
   
   <!-- 게시글 삭제 -->
   <delete id="delete">
-  	delete from tbl_board where bno = #{bno};
+  	delete from tbl_board where bno = #{bno}
   </delete>
 </mapper>
