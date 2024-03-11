@@ -19,7 +19,19 @@
   </insert>
   
   <insert id="insertSelectKey">
-
+  	<!-- 
+  		mybatis에서 selectKey
+  		insert문을 수행하기 전에 키값을 먼저(BEFORE) SQL로 처리하고
+  		특정한 이름(bno)으로 결과를 보관한다.
+  		
+  		keyProperty의 값은 BoardVO 필드의 이름과 같아야 한다.
+  		그렇지 않으면 BoardVO의 해당 필드에 null값이 들어가서
+  		selectKey가 수행되지 않으므로 insert가 이루어지지 않는다.
+  		
+  		[실제로 출력된 에러메시지](keyProperty를 bno 말고 bno_로 지정했을 때)
+  		Caused by: org.apache.ibatis.executor.ExecutorException: No setter found for the keyProperty 'bno_' in org.zerock.domain.BoardVO.
+	
+   -->
   	<selectKey keyProperty="bno" order="BEFORE" resultType="Long">
   		select seq_board.nextval from dual
   	</selectKey>
