@@ -14,4 +14,7 @@ public interface BoardMapper {
   
   //데이터 삽입하고 key까지 가져옴
   public void insertSelectKey(BoardVO board);
+  
+  //게시글 읽기(상세조회)
+  public BoardVO read(Long bno);
 }
