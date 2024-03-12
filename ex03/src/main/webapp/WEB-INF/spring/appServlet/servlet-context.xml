@@ -21,8 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- controller는 서블렛과 연결하므로 servlet-context.xml에서 스캔한다. -->
 	<context:component-scan base-package="org.zerock.controller" />
-	
-	
 	
 </beans:beans>

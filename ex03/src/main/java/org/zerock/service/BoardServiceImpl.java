@@ -32,8 +32,12 @@ public class BoardServiceImpl implements BoardService {
              mapper 패키지 안의 컴포넌트들도 spring이 관리하므로
              여기서 autowired를 설정해도 정상적으로 주입이 가능한 것이다.
   */
+  
+  //@Autowired
   @Setter(onMethod_ = @Autowired)
   private BoardMapper mapper;
+  
+  //Service에서는 사용자들이 쓰는 일반용어를 쓴다.
   
   //게시글 등록
   @Override

@@ -68,6 +68,7 @@ public class BoardMapperTests {
   //테스트: 게시물 삭제
   @Test
   public void testDelete() {
+    //7L이 있는지 확인하고 실행
     log.info("DELETE COUNT: " + mapper.delete(7L));
   }
   
@@ -75,6 +76,7 @@ public class BoardMapperTests {
   @Test
   public void testUpdate() {
     BoardVO board = new BoardVO();
+    //실행 전 존재하는 번호인지 확인
     board.setBno(6L);
     board.setTitle("수정된 제목");
     board.setContent("수정된 내용");

@@ -58,6 +58,7 @@
   	update tbl_board
   	set title=#{title},
   	content = #{content},
+  	<!-- 작성자는 잘 수정하지 않는다. -->
   	writer = #{writer},
   	updateDate = sysdate
   	where bno = #{bno}
