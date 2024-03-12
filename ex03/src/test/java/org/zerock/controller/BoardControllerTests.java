@@ -27,7 +27,8 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 public class BoardControllerTests {
 
-  @Setter(onMethod_ = {@Autowired})
+  //@Setter(onMethod_ = {@Autowired})
+  @Autowired
   private WebApplicationContext ctx;
   /*
       개발 단계에서 Tomcat(WAS)를 실행하지 않고 스프링 프로젝트를 테스트 할 수 있는 방법!
@@ -40,7 +41,12 @@ public class BoardControllerTests {
   
   /*
      @Before이 붙은 메소드는 모든 테스트 전에 매번 실행된다.
+       모든 테스트를 실행할 때 값을 clear하지 않으면 충돌의 위험이 있으므로 @Before에서 값을 clear하는 작업을 하는 것이다.
+     
+     @After: 후에 실행
+     @Around: 전/후 둘 다
    */
+  
   @Before
   public void setup() {
     this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
@@ -55,4 +61,5 @@ public class BoardControllerTests {
         .getModelAndView()
         .getModelMap());
   }
+
 }
