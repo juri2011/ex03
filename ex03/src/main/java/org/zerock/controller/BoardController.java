@@ -35,6 +35,12 @@ public class BoardController {
     
   }
   
+  //return값이 void일 경우 주소활용
+  @GetMapping("/register")
+  public void register() {
+
+  }
+  
   //등록
   //PRG패턴
   @PostMapping("/register")
