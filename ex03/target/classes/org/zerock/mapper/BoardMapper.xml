@@ -11,7 +11,7 @@
   <select id="getList" resultType="org.zerock.domain.BoardVO">
   <!-- CDATA 구문을 사용하는 이유 : html이나 xml 등에서 부등호(< , >)를 태그로 인식하지 않게 하기 위해서 -->
   <![CDATA[
-  		select * from tbl_board where bno > 0
+  		select * from tbl_board where bno > 0 order by bno desc
   ]]>
   </select>
   
