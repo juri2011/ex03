@@ -35,6 +35,7 @@ public class BoardController {
     
   }
   
+  //등록
   //PRG패턴
   @PostMapping("/register")
   /*
@@ -59,6 +60,7 @@ public class BoardController {
     
   }
   
+  //상세조회
   @GetMapping("/get")
   public void get(@RequestParam("bno") Long bno, Model model) {
     
@@ -66,7 +68,7 @@ public class BoardController {
     model.addAttribute("board",service.get(bno));
   }
   
-  
+  //수정
   @PostMapping("/modify")
   public String modify(BoardVO board, RedirectAttributes rttr) {
     log.info("modify: " + board);
@@ -78,6 +80,7 @@ public class BoardController {
     
   }
   
+  //삭제
   @PostMapping("/remove")
   public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
     log.info("remove: " + bno);

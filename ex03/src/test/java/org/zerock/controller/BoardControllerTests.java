@@ -53,6 +53,7 @@ public class BoardControllerTests {
     this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
   }
   
+  //목록 조회 테스트
   @Test
   public void testList() throws Exception {
     
@@ -63,6 +64,7 @@ public class BoardControllerTests {
         .getModelMap());
   }
   
+  //등록 조회 테스트
   @Test
   public void testRegister() throws Exception {
     /*
@@ -80,6 +82,7 @@ public class BoardControllerTests {
     
   }
   
+  //상세 조회 테스트
   @Test
   public void testGet() throws Exception {
     
@@ -91,6 +94,7 @@ public class BoardControllerTests {
                     .getModelAndView().getModelMap());
   }
   
+  //수정 테스트
   @Test
   public void testModify() throws Exception {
     /*
@@ -109,6 +113,7 @@ public class BoardControllerTests {
     
   }
   
+  //삭제 테스트
   @Test
   public void testRemove() throws Exception {
     //삭제전 데이터베이스에 게시물 번호 확인
