@@ -79,5 +79,16 @@ public class BoardControllerTests {
     log.info(resultPage);
     
   }
+  
+  @Test
+  public void testGet() throws Exception {
+    
+    //3번 데이터가 있는지 확인
+    log.info(mockMvc.perform( MockMvcRequestBuilders
+                              .get("/board/get")
+                              .param("bno", "3")  )
+                    .andReturn()
+                    .getModelAndView().getModelMap());
+  }
 
 }
