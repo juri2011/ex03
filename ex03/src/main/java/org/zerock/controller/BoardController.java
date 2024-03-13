@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
 import org.zerock.service.BoardService;
@@ -36,6 +37,17 @@ public class BoardController {
   
   //PRG패턴
   @PostMapping("/register")
+  /*
+     여기서는 ModelAttribute를 쓰지 않는다
+     RedirectAttributes: ctrl + 클릭으로 확인해보면 Model을 상속받은 인터페이스라는 것을 알 수 있다.
+     
+     RedirectAttributes의
+       addAttribute와 addFlashAttribute의 차이점?
+     addAttribute: 리다이렉트에 추가한 attribute가 쿼리 파라미터로 넘어감
+     addFlashAttribute: 객체를 넘기고 싶을 때 사용(session에 잠시 보관됨) 
+                        일회성으로 사용 가능하고, 새로고침하면 휘발됨(Flash)
+                        Model을 상속받은 인터페이스이므로 자동으로 Model에 등록됨
+  */
   public String register(BoardVO board, RedirectAttributes rttr) {
     log.info("register: " + board);
     
@@ -45,5 +57,11 @@ public class BoardController {
     
     return "redirect:/board/list";
     
+  }
+  
+  @GetMapping("/get")
+  public void get(@RequestParam("bno") Long bno, Model model) {
+    log.info("/get");
+    model.addAttribute("board",service.get(bno));
   }
 }

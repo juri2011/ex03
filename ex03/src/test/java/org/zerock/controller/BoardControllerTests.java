@@ -65,7 +65,10 @@ public class BoardControllerTests {
   
   @Test
   public void testRegister() throws Exception {
-    
+    /*
+       .param(): input 태그와 비슷한 역할
+       
+     */
     String resultPage
     = mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
         .param("title","테스트 새글 제목")
