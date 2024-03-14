@@ -18,7 +18,10 @@
 				<div class="panel-heading">Board Modify Page</div>
 				<!-- /.panel-heading -->
 				<div class="panel-body">
-					<form action="/board/modify" method="post">
+					
+					<!-- form 태그에 action과 method를 지웠다.
+						각 버튼을 클릭할 때마다 무슨 변화가 생기는지 js 코드에서 확인해보자 -->
+					<form>
 					
 						<div class="form-group">
 							<label>Bno</label> <input class="form-control" name="bno"
@@ -45,6 +48,7 @@
 							<label>Update Date</label> <input class="form-control" name="updateDate"
 								value='<fmt:formatDate pattern = "yyyy/MM/dd" value="${board.updateDate}" />' readonly>
 						</div>
+						<!-- submit가 3개인데 각각 다른 동작을 취하는 이유? -> js 코드에서 살펴보기 -->
 						<button type="submit" data-oper="modify" class="btn btn-default">Modify</button>
 						<button type="submit" data-oper="remove" class="btn btn-danger">Remove</button>
 						<button type="submit" data-oper="list" class="btn btn-info">List</button>
@@ -69,15 +73,26 @@
 			
 			console.log(operation);
 			
-			//클릭한 버튼의 data-oper 속성이 remove라면 remove로 이동
-			if(operation === 'remove'){
-				formObj.attr("action", "/board/remove");
+			
 			//클릭한 버튼의 data-oper 속성이 list라면 list로 이동
-			}else if(operation === 'list'){
+			if(operation === 'list'){
 				self.location = "/board/list";
 				return;
+			}else if(operation === 'remove'){
+				//클릭한 버튼의 data-oper 속성이 remove라면
+				//form 태그의 action을 "/board/remove"로 설정하고
+				//method를 post로 지정한다.
+				formObj.attr("action", "/board/remove")
+					   .attr("method","post");
+			
+			}else if(operation === 'modify'){
+				//클릭한 버튼의 data-oper 속성이 modify라면
+				//form 태그의 action을 "/board/modify"로 설정하고
+				//method를 post로 지정한다.
+				formObj.attr("action", "/board/modify")
+				   	.attr("method","post");
 			}
-			formObj.submit();
+			//formObj.submit();
 		});
 	})
 </script>
