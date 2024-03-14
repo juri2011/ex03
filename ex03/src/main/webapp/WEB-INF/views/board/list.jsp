@@ -51,7 +51,8 @@
 					        <p>처리가 완료되었습니다.</p>
 					      </div>
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					      	<!-- data-bs-dismiss 대신에 data-dismiss사용(버전 문제) -->
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 					        <button type="button" class="btn btn-primary">Save changes</button>
 					      </div>
 					    </div>
@@ -76,6 +77,21 @@
 <script>
 	$(document).ready(function(){
 		//controller로부터 가져온 값을 result 변수로 대입
-		var result = '<c:out value="${result}"/>';
+		let result = '<c:out value="${result}"/>';
+		
+		checkModal(result);
+		
+		function checkModal(result){
+			if(result === ''){
+				return;
+			}
+			
+			//데이터가 있으면 모달 나타남
+			if(parseInt(result) > 0){
+				$(".modal-body").html("게시글 " + parseInt(result) + " 번이 등록되었습니다.");
+			}
+			
+			$("#myModal").modal("show");
+		}
 	});
 </script>

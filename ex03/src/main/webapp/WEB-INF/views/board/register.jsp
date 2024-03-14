@@ -43,3 +43,15 @@
 	<!-- /.row -->
 </div>
 <%@include file="../includes/footer.jsp"%>
+<script>
+
+	//onpageshow -> 새롭게 진입하거나 뒤로가기로 진입하거나 항상 발생하는 이벤트
+	//event의 persisted 속성: 웹페이지가 캐시로부터 로드되었는지 여부를 저장하는 속성 (boolean)
+	window.onpageshow = function(event) {
+	//back 이벤트 일 경우
+	if (event.persisted) {
+		location.reload(true);
+	}
+
+	}
+</script>
