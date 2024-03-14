@@ -90,8 +90,11 @@
 		
 		checkModal(result);
 		
+		//register.jsp에서 location.reload() 설정 하지 않았을 경우 작성할 수 있는 코드
+		history.replaceState({},null, null);
+		
 		function checkModal(result){
-			if(result === ''){
+			if(result === '' || history.state){
 				return;
 			}
 			

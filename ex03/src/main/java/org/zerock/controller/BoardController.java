@@ -66,11 +66,11 @@ public class BoardController {
     
   }
   
-  //상세조회
-  @GetMapping("/get")
+  //상세조회 + 수정 -> 같은 화면 띄우기
+  @GetMapping({"/get","/modify"})
   public void get(@RequestParam("bno") Long bno, Model model) {
     
-    log.info("/get");
+    log.info("/get or /modify");
     model.addAttribute("board",service.get(bno));
   }
   
