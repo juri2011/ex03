@@ -30,7 +30,13 @@
 						<tbody>
 							<c:forEach items="${list}" var="board">
 								<tr>
-									<!-- c:out을 "굳이" 사용하는 이유??: 보안성-->
+									<!--
+										c:out을 "굳이" 사용하는 이유??: 보안성
+										input에 <script>를 작성하는 경우 자바스크립트를
+										그대로 실행시킬 위험이 있다.
+										c:out은 <,>,&,',"같은 특수기호들을 글자 그대로 출력하기 때문에
+										XSS 공격에 대비할 수 있다.
+									-->
 									<td><c:out value="${board.bno}" /></td>
 									<td><c:out value="${board.title}" /></td>
 									<td><c:out value="${board.writer}" /></td>
