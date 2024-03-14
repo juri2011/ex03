@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
 
-<!-- page-wrapper 없으면 오류 발생 -->
+<!-- page-wrapper 없으면 nav가 튀어나오는 오류 발생 -->
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
