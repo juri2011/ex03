@@ -12,7 +12,7 @@ public class Criteria {
   private int pageNum;
   private int amount;
   
-  //파라미터가 없을 경우 1페이지 출력
+  //파라미터가 없을 경우 1페이지 출력(기본값)
   public Criteria() {
     this(1, 10);
   }
