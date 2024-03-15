@@ -84,7 +84,7 @@
 				//method를 post로 지정한다.
 				formObj.attr("action", "/board/remove")
 					   .attr("method","post");
-			
+				
 			}else if(operation === 'modify'){
 				//클릭한 버튼의 data-oper 속성이 modify라면
 				//form 태그의 action을 "/board/modify"로 설정하고
@@ -92,7 +92,7 @@
 				formObj.attr("action", "/board/modify")
 				   	.attr("method","post");
 			}
-			//formObj.submit();
+			formObj.submit();
 		});
 	})
 </script>
