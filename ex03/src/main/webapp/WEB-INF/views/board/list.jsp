@@ -48,7 +48,7 @@
 						</tbody>
 					</table>
 					<!-- table -->
-					
+						<h3>${pageMaker}</h3>
 					<div class="modal" tabindex="-1" id="myModal" role="dialog">
 					  <div class="modal-dialog">
 					    <div class="modal-content">
