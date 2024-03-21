@@ -79,4 +79,8 @@
   	updateDate = sysdate
   	where bno = #{bno}
   </update>
+  
+  <select id="selectCount" resultType="int">
+  	select count(*) from tbl_board
+  </select>
 </mapper>

@@ -39,5 +39,8 @@ select * from dual;
 -- 데이터 전체 확인
 select * from tbl_board where bno>0;
 
+-- 데이터 전체 개수 확인
+select count(*) from tbl_board;
+
 -- 커밋
 commit;

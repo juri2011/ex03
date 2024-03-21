@@ -27,4 +27,6 @@ public interface BoardMapper {
   
   //게시글 수정
   public int update(BoardVO board);
+
+  public int selectCount();
 }

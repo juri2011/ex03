@@ -4,6 +4,10 @@
 <%@include file="../includes/header.jsp"%>
 
 <div id="page-wrapper">
+	<form id="actionForm" action="/board/list" method="get">
+		<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}" />
+		<input type="hidden" name="amount" value="${pageMaker.cri.amount}" />
+	</form>
 	<div class="row">
 		<div class="col-lg-12"> <h1 class="page-header">Board List Page</h1> </div>
 		<!-- /.col-lg-12 -->
@@ -38,7 +42,8 @@
 										XSS 공격에 대비할 수 있다.
 									-->
 									<td><c:out value="${board.bno}" /></td>
-									<td><a href="/board/get?bno=<c:out value='${board.bno}'/>">
+									
+									<td><a class="move" href="<c:out value='${board.bno}'/>">
 										<c:out value="${board.title}" /></a></td>
 									<td><c:out value="${board.writer}" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.regdate}" /></td>
@@ -133,11 +138,24 @@
 			self.location = "/board/register";
 		})
 		
+		var actionForm = $('#actionForm');
+			
 		$(".page-link").on("click",function(e){
 			e.preventDefault();
+			
 			var targetPage = $(this).attr('href');
 			console.log(targetPage);
-			location.href = "/board/list?pageNum="+targetPage;
+			
+			actionForm.find("input[name='pageNum']").val(targetPage);
+			actionForm.submit();
+		});
+		$('.move').on('click',function(e){
+			e.preventDefault();
+			//form input bno로 변경
+			actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr("href")+"'/>");
+			// list.jsp가 아니라 get.jsp로 이동
+			actionForm.attr('action','/board/get');
+			actionForm.submit();
 		});
 	});
 </script>

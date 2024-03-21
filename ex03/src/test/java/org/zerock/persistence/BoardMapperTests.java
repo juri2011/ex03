@@ -108,7 +108,7 @@ public class BoardMapperTests {
   @Test
   public void testPageDTO() {
     Criteria cri = new Criteria();
-    cri.setPageNum(21);
+    cri.setPageNum(2);
     PageDTO pageDTO = new PageDTO(cri, 251);
     
     log.info(pageDTO);

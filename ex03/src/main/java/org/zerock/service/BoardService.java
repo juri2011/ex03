@@ -25,4 +25,7 @@ public interface BoardService {
   //게시물 목록
   public List<BoardVO> getList(Criteria cri);
   
+  //게시글 수 찾기
+  public int selectCount();
+  
 }

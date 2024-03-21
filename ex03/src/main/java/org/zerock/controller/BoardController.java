@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,7 +45,7 @@ public class BoardController {
     log.info("list" + cri);
     model.addAttribute("list", service.getList(cri));
     //데이터 123개
-    model.addAttribute("pageMaker", new PageDTO(cri, 123));
+    model.addAttribute("pageMaker", new PageDTO(cri, service.selectCount()));
   }
   
   //return값이 void일 경우 주소활용
@@ -80,10 +81,11 @@ public class BoardController {
   
   //상세조회 + 수정 -> 같은 화면 띄우기
   @GetMapping({"/get","/modify"})
-  public void get(@RequestParam("bno") Long bno, Model model) {
+  public void get(@RequestParam("bno") Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
     
     log.info("/get or /modify");
     model.addAttribute("board",service.get(bno));
+    model.addAttribute("cri",cri);
   }
   
   //수정

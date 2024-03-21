@@ -87,4 +87,9 @@ public class BoardServiceImpl implements BoardService {
     
   }
 
+  @Override
+  public int selectCount() {
+    return mapper.selectCount();
+  }
+
 }
