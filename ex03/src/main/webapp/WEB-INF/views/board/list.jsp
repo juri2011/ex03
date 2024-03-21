@@ -48,14 +48,25 @@
 						</tbody>
 					</table>
 					<!-- table -->
-						<h3>${pageMaker}</h3>
-						<ul>
-							<c:forEach begin="${pageMaker.startPage}"
-										end="${pageMaker.endPage}"
-										var="num">
-								<li>${num}</li>
-							</c:forEach>
-						</ul>
+						<div class='pull-right'>
+							<ul class="pagination">
+								<%-- <c:if test="${pageMaker.prev}"> --%>
+									<!-- bootstrap 버전이 달라서 교재와 class가 다를 수 있음 -->
+									<li class="page-item"><a class="page-link" href="list?pageNum=${pageMaker.startPage-1}">Previous</a></li>
+								<%-- </c:if> --%>
+								<c:forEach begin="${pageMaker.startPage}"
+											end="${pageMaker.endPage}"
+											var="num">
+									<li class="page-item ${pageMaker.cri.pageNum == num ? 'active':'' }">
+										<a class="page-link" href="list?pageNum=${num}">${num}</a>
+									</li>
+								</c:forEach>
+								<c:if test="${pageMaker.next}">
+									<li class="page-item"><a class="page-link" href="list?pageNum=${pageMaker.endPage+1}">Next</a></li>
+								</c:if>
+							</ul>
+						</div>
+						
 					<!-- 모달 시작 -->
 					<div class="modal" tabindex="-1" id="myModal" role="dialog">
 					  <div class="modal-dialog">
