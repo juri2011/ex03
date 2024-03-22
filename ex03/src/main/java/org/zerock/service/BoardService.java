@@ -26,6 +26,6 @@ public interface BoardService {
   public List<BoardVO> getList(Criteria cri);
   
   //게시글 수 찾기
-  public int selectCount();
+  public int getTotal(Criteria cri);
   
 }

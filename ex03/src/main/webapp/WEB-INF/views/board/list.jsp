@@ -138,21 +138,34 @@
 			self.location = "/board/register";
 		})
 		
+		
 		var actionForm = $('#actionForm');
-			
+		//페이지네이션
 		$(".page-link").on("click",function(e){
 			e.preventDefault();
 			
+			//href는 preventDefault에 의해 실제로 작동하지 않고 속성값이 form으로 이용됨
 			var targetPage = $(this).attr('href');
 			console.log(targetPage);
 			
+			//pageNum에 href로 들어간 속성값이 들어간다.(페이지 넘버) 
 			actionForm.find("input[name='pageNum']").val(targetPage);
 			actionForm.submit();
 		});
+		//상세페이지 이동
 		$('.move').on('click',function(e){
 			e.preventDefault();
-			//form input bno로 변경
-			actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr("href")+"'/>");
+			//form input 추가 -> 
+			
+			actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr("href")+"'/>");				
+			
+			//bno 파라미터가 있으면
+			/*
+			if(){
+				actionForm.append("<input type='hidden' name='bno' value='"+$(this).attr("href")+"'/>");				
+			}
+			*/
+			console.log(actionForm.find("input[name='pageNum']").val);
 			// list.jsp가 아니라 get.jsp로 이동
 			actionForm.attr('action','/board/get');
 			actionForm.submit();

@@ -22,6 +22,9 @@
 					<!-- form 태그에 action과 method를 지웠다.
 						각 버튼을 클릭할 때마다 무슨 변화가 생기는지 js 코드에서 확인해보자 -->
 					<form>
+					<!-- 페이지 이동 내용 추가 -->
+						<input type="hidden" name="pageNum" value="<c:out value='${cri.pageNum}'/>"/>
+						<input type="hidden" name="amount" value="<c:out value='${cri.amount}'/>"/>
 					
 						<div class="form-group">
 							<label>Bno</label> <input class="form-control" name="bno"
@@ -76,8 +79,14 @@
 			
 			//클릭한 버튼의 data-oper 속성이 list라면 list로 이동
 			if(operation === 'list'){
-				self.location = "/board/list";
-				return;
+				formObj.attr("action","/board/list").attr("method","get");
+				var pageNumTag = $("input[name='pageNum']").clone();
+				var amountTag = $("input[name='amount']").clone();
+				
+				formObj.empty();
+				formObj.append(pageNumTag);
+				formObj.append(amountTag);
+				
 			}else if(operation === 'remove'){
 				//클릭한 버튼의 data-oper 속성이 remove라면
 				//form 태그의 action을 "/board/remove"로 설정하고

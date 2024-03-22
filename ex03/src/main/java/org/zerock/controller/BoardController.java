@@ -39,13 +39,16 @@ public class BoardController {
    */
   
   //게시물 목록 출력
+  //pageNum과 amount를 파라미터로 전달하면 Criteria 디폴트 생성자가 호출되고
+  //파라미터는 setter로 받는다.
+  //(pageNum이나 amount 둘 중 하나가 없어도 디폴트 값이 있어서 런타임 에러는 나지 않는다.)
   @GetMapping("/list")
   public void list(Criteria cri, Model model) {
     
     log.info("list" + cri);
     model.addAttribute("list", service.getList(cri));
     //데이터 123개
-    model.addAttribute("pageMaker", new PageDTO(cri, service.selectCount()));
+    model.addAttribute("pageMaker", new PageDTO(cri,service.getTotal(cri)));
   }
   
   //return값이 void일 경우 주소활용
@@ -90,24 +93,30 @@ public class BoardController {
   
   //수정
   @PostMapping("/modify")
-  public String modify(BoardVO board, RedirectAttributes rttr) {
+  public String modify(BoardVO board, @ModelAttribute Criteria cri,
+                        RedirectAttributes rttr) {
     log.info("modify: " + board);
     
     if(service.modify(board)) {
       rttr.addFlashAttribute("result","success");
     }
+    rttr.addAttribute("pageNum", cri.getPageNum());
+    rttr.addAttribute("amount", cri.getAmount());
     return "redirect:/board/list";
     
   }
   
   //삭제
   @PostMapping("/remove")
-  public String remove(@RequestParam("bno") Long bno, RedirectAttributes rttr) {
+  public String remove(@RequestParam("bno") Long bno, @ModelAttribute Criteria cri,
+                        RedirectAttributes rttr) {
     log.info("remove: " + bno);
     
     if(service.remove(bno)) {
       rttr.addFlashAttribute("result","success");
     }
+    rttr.addAttribute("pageNum", cri.getPageNum());
+    rttr.addAttribute("amount", cri.getAmount());
     return "redirect:/board/list";
   }
   
